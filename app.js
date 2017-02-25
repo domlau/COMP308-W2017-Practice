@@ -4,6 +4,22 @@ let favicon = require('serve-favicon');
 let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
+//adding require mongoose
+let mongoose = require("mongoose");
+//connect to mongoDB game 
+//mongoose URI
+let URI = "mongodb://localhost/practice"
+//let URI = "mongodb://root:admin@ds145359.mlab.com:45359/practice";
+
+//connect to mongo db
+mongoose.connect(URI);
+//create db obj and make reference to connection
+let db = mongoose.connection;
+db.on('error',console.error.bind(console,'connection error:'));
+db.once('open',() => {
+  console.log("Connected to MongoDB");
+});
+
 
 let index = require('./routes/index');
 
