@@ -20,6 +20,7 @@ db.once('open',() => {
 
 
 let index = require('./routes/index');
+let practices = require('./routes/practice');
 
 let app = express();
 
@@ -36,6 +37,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client')));
 
 app.use('/', index);
+app.use('/practice',practices);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

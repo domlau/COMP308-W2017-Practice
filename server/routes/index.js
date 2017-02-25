@@ -14,23 +14,6 @@ router.get('/', (req, res, next) => {
   });
 });
 
-/* GET about page. */
-router.get('/about', (req, res, next) => {
-  //equilvalent to db.find
-  practice.find((err, practice) => {
-    if (err) {
-      return console.error(err);
-    }
-    else {
-      res.render('content/about', {
-        title: 'About',
-        //passing collection from server that will pass into the view
-        practice:practice
-      });
-    }
-  })
-
-});
 
 /* GET Contact page. */
 router.get('/contact', (req, res, next) => {
@@ -39,11 +22,5 @@ router.get('/contact', (req, res, next) => {
   });
 });
 
-/* GET Service page. */
-router.get('/service', (req, res, next) => {
-  res.render('content/service', {
-    title: 'Service'
-  });
-});
 
 module.exports = router;
