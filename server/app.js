@@ -10,7 +10,7 @@ let mongoose = require("mongoose");
 let config = require('./config/db');
 
 //connect to mongo db
-mongoose.connect(config.URI);
+mongoose.connect(process.env.URI || config.URI);
 //create db obj and make reference to connection
 let db = mongoose.connection;
 db.on('error',console.error.bind(console,'connection error:'));
