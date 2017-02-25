@@ -6,13 +6,11 @@ let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 //adding require mongoose
 let mongoose = require("mongoose");
-//connect to mongoDB game 
-//mongoose URI
-let URI = "mongodb://localhost/practice"
-//let URI = "mongodb://root:admin@ds145359.mlab.com:45359/practice";
+//import config module
+let config = require('./config/db');
 
 //connect to mongo db
-mongoose.connect(URI);
+mongoose.connect(config.URI);
 //create db obj and make reference to connection
 let db = mongoose.connection;
 db.on('error',console.error.bind(console,'connection error:'));
@@ -35,7 +33,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../client')));
 
 app.use('/', index);
 

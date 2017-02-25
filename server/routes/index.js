@@ -5,7 +5,7 @@ let router = express.Router();
 let mongoose = require('mongoose');
 
 //create the object that represents the document in the practice collection
-let practice = require('../config/schema');
+let practice = require('../models/schema');
 
 /* GET home page. wildcard */
 router.get('/', (req, res, next) => {
